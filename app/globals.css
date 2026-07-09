@@ -1,0 +1,259 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ------------------------------------------------------------------ */
+/*  THE MAT — brand theme (forest green · cream · gold)               */
+/* ------------------------------------------------------------------ */
+@theme {
+  --font-display: var(--font-cinzel);
+  --font-sans: var(--font-outfit);
+  --font-script: var(--font-outfit);
+
+  /* Greens (dark surfaces) */
+  --color-ink: #08120c;        /* deepest, near-black green */
+  --color-forest-950: #0a1a10;
+  --color-forest-900: #0e2417; /* primary dark surface */
+  --color-forest-850: #123020;
+  --color-forest-800: #16391f; /* logo felt green */
+  --color-forest-700: #1c5232;
+  --color-forest-600: #237a44;
+  --color-forest-500: #2e9755;
+  --color-glow: #3fd07a;       /* green glow / accent */
+
+  /* Warm neutrals */
+  --color-cream: #f4edd9;      /* primary cream surface + text on green */
+  --color-cream-200: #e9dfc4;
+  --color-cream-300: #ddd0b0;
+  --color-parchment: #efe7d0;
+  --color-sage: #94a793;       /* muted text on dark */
+  --color-sage-dim: #6f8271;
+
+  /* Metallic gold */
+  --color-gold: #c6a15a;
+  --color-gold-soft: #dcc188;
+  --color-gold-deep: #9c7c3c;
+
+  --radius: 0.5rem;
+}
+
+:root {
+  --background: var(--color-forest-900);
+  --foreground: var(--color-cream);
+  --grain-opacity: 0.05;
+}
+
+@layer base {
+  * {
+    border-color: color-mix(in oklab, var(--color-cream) 12%, transparent);
+  }
+  html {
+    scroll-behavior: smooth;
+    background: var(--color-ink);
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    background: var(--color-forest-900);
+    color: var(--color-cream);
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+  }
+  ::selection {
+    background: var(--color-gold);
+    color: var(--color-ink);
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: 0.01em;
+  }
+  /* Firefox scrollbar */
+  * { scrollbar-color: var(--color-forest-600) transparent; }
+}
+
+/* ---- Type helpers ------------------------------------------------- */
+.font-display { font-family: var(--font-display); }
+.eyebrow {
+  font-family: var(--font-sans);
+  text-transform: uppercase;
+  letter-spacing: 0.32em;
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--color-gold);
+}
+.display-caps {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  line-height: 0.98;
+}
+.text-balance { text-wrap: balance; }
+.text-gold-gradient {
+  background: linear-gradient(180deg, var(--color-gold-soft), var(--color-gold) 55%, var(--color-gold-deep));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ---- Buttons ------------------------------------------------------ */
+.btn-gold {
+  background: linear-gradient(180deg, var(--color-gold-soft), var(--color-gold));
+  color: var(--color-ink);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+  border-radius: 999px;
+  box-shadow: 0 10px 40px -12px color-mix(in oklab, var(--color-gold) 60%, transparent);
+  transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s;
+}
+.btn-gold:hover { transform: translateY(-2px); box-shadow: 0 18px 55px -14px color-mix(in oklab, var(--color-gold) 75%, transparent); }
+.btn-ghost {
+  border: 1px solid color-mix(in oklab, var(--color-cream) 34%, transparent);
+  color: var(--color-cream);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-size: 0.76rem;
+  border-radius: 999px;
+  transition: background .3s, border-color .3s, color .3s;
+}
+.btn-ghost:hover { background: var(--color-cream); color: var(--color-ink); border-color: var(--color-cream); }
+
+/* ---- Hairline dividers / labels ---------------------------------- */
+.rule { height: 1px; background: linear-gradient(90deg, transparent, color-mix(in oklab, var(--color-gold) 55%, transparent), transparent); }
+
+/* ---- Film grain + vignette overlays ------------------------------ */
+.grain::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 60;
+  opacity: var(--grain-opacity);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+  mix-blend-mode: overlay;
+}
+.vignette { box-shadow: inset 0 0 200px 40px rgba(0,0,0,0.55), inset 0 0 60px 0 rgba(0,0,0,0.35); }
+
+/* ---- Marquee ------------------------------------------------------ */
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.marquee-track { display: flex; width: max-content; animation: marquee var(--marquee-duration, 40s) linear infinite; }
+.marquee-track:hover { animation-play-state: paused; }
+
+/* ---- GSAP reveal initial states (avoid FOUC) --------------------- */
+.reveal { opacity: 0; transform: translateY(28px); }
+.reveal-clip { clip-path: inset(0 0 100% 0); }
+.js-ready .reveal, .js-ready .reveal-clip { will-change: transform, opacity; }
+
+/* ---- Ken Burns hero drift ---------------------------------------- */
+@keyframes kenburns { 0% { transform: scale(1.06) translate3d(0,0,0); } 100% { transform: scale(1.16) translate3d(-1.5%, -1.5%, 0); } }
+.kenburns { animation: kenburns 26s ease-in-out infinite alternate; }
+
+/* ---- Utility ------------------------------------------------------ */
+.noise-bg { background-color: var(--color-forest-900); background-image: radial-gradient(120% 80% at 50% -10%, color-mix(in oklab, var(--color-forest-700) 55%, transparent), transparent 60%); }
+
+/* ================================================================== */
+/*  PREMIUM PRIMITIVES (21st.dev-level polish)                         */
+/* ================================================================== */
+
+@layer components {
+
+/* Glass surfaces */
+.glass {
+  background: color-mix(in oklab, var(--color-forest-900) 55%, transparent);
+  backdrop-filter: blur(14px) saturate(1.2);
+  -webkit-backdrop-filter: blur(14px) saturate(1.2);
+  border: 1px solid color-mix(in oklab, var(--color-cream) 12%, transparent);
+}
+.glass-gold {
+  background: color-mix(in oklab, var(--color-forest-900) 60%, transparent);
+  backdrop-filter: blur(16px) saturate(1.2);
+  -webkit-backdrop-filter: blur(16px) saturate(1.2);
+  border: 1px solid color-mix(in oklab, var(--color-gold) 30%, transparent);
+}
+
+/* Animated aurora / gradient-mesh background for dark sections */
+@keyframes aurora-drift {
+  0%   { transform: translate3d(-4%, -2%, 0) scale(1.05); }
+  50%  { transform: translate3d(4%, 3%, 0) scale(1.12); }
+  100% { transform: translate3d(-4%, -2%, 0) scale(1.05); }
+}
+.aurora { position: relative; isolation: isolate; }
+.aurora::before {
+  content: ""; position: absolute; inset: -20% -10%; z-index: -1; pointer-events: none;
+  background:
+    radial-gradient(38% 44% at 18% 22%, color-mix(in oklab, var(--color-glow) 26%, transparent), transparent 70%),
+    radial-gradient(40% 46% at 82% 18%, color-mix(in oklab, var(--color-gold) 18%, transparent), transparent 72%),
+    radial-gradient(50% 55% at 60% 88%, color-mix(in oklab, var(--color-forest-600) 32%, transparent), transparent 70%);
+  filter: blur(30px);
+  animation: aurora-drift 22s ease-in-out infinite;
+}
+
+/* Spotlight highlight */
+.spotlight::after {
+  content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background: radial-gradient(60% 50% at 50% 0%, color-mix(in oklab, var(--color-glow) 14%, transparent), transparent 70%);
+}
+
+/* Gold button — sheen sweep */
+.btn-gold { position: relative; overflow: hidden; }
+.btn-gold::after {
+  content: ""; position: absolute; top: 0; left: -120%; width: 60%; height: 100%;
+  background: linear-gradient(100deg, transparent, color-mix(in oklab, #fff 55%, transparent), transparent);
+  transform: skewX(-18deg); transition: left .6s ease;
+}
+.btn-gold:hover::after { left: 130%; }
+
+/* Chips */
+.chip {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.4rem 0.85rem; border-radius: 999px; font-size: 0.72rem;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  border: 1px solid color-mix(in oklab, var(--color-cream) 16%, transparent);
+  color: var(--color-cream);
+  background: color-mix(in oklab, var(--color-forest-950) 40%, transparent);
+  backdrop-filter: blur(8px);
+}
+
+/* Hover lift */
+.lift { transition: transform .4s cubic-bezier(.2,.8,.2,1), box-shadow .4s; }
+.lift:hover { transform: translateY(-6px); box-shadow: 0 30px 60px -30px rgba(0,0,0,.7); }
+
+/* Gradient hairline top */
+.hair-t { border-top: 1px solid transparent; border-image: linear-gradient(90deg, transparent, color-mix(in oklab, var(--color-gold) 60%, transparent), transparent) 1; }
+
+/* ---- Editorial image treatment (kills the "AI stock" sheen) ------ */
+.editorial { position: relative; overflow: hidden; }
+.editorial > img, .editorial > video { filter: saturate(0.78) contrast(1.05) brightness(0.9); }
+.editorial::after {
+  content: ""; position: absolute; inset: 0; z-index: 2; pointer-events: none;
+  background:
+    linear-gradient(180deg, color-mix(in oklab, var(--color-forest-800) 35%, transparent), transparent 35%, color-mix(in oklab, var(--color-forest-950) 55%, transparent)),
+    radial-gradient(120% 100% at 50% 30%, transparent 45%, color-mix(in oklab, var(--color-forest-950) 60%, transparent));
+  mix-blend-mode: multiply;
+}
+.editorial::before {
+  content: ""; position: absolute; inset: 0; z-index: 3; pointer-events: none; opacity: 0.22;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+}
+
+/* Scroll cue bounce */
+.cue { animation: cue 2s ease-in-out infinite; }
+
+} /* end @layer components */
+
+@keyframes aurora-drift {
+  0%   { transform: translate3d(-4%, -2%, 0) scale(1.05); }
+  50%  { transform: translate3d(4%, 3%, 0) scale(1.12); }
+  100% { transform: translate3d(-4%, -2%, 0) scale(1.05); }
+}
+@keyframes cue { 0%,100% { transform: translateY(0); opacity:.5 } 50% { transform: translateY(6px); opacity:1 } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; scroll-behavior: auto !important; }
+  .reveal, .reveal-clip { opacity: 1 !important; transform: none !important; clip-path: none !important; }
+  .kenburns { animation: none !important; }
+}
