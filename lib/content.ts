@@ -22,8 +22,8 @@ export const site = {
   tagline: "North Georgia's Members-Only Indoor Golf Club",
   phone: "(770) 618-9393",
   phoneHref: "tel:+17706189393",
-  // TODO(client): confirm business email before launch.
-  email: "hello@thematgolf.com",
+  email: "inquire@golfatthemat.com",
+  emailHref: "mailto:inquire@golfatthemat.com",
   region: "Gainesville · Hall County · North Georgia",
   url: "https://thematgolf.com",
   social: {
@@ -40,6 +40,7 @@ export const site = {
         "Members-only indoor golf simulator club in Gainesville / Hall County, North Georgia. One private big-room bay, open 24/7.",
       url: this.url,
       telephone: "+17706189393",
+      email: "inquire@golfatthemat.com",
       areaServed: "Gainesville, Hall County, North Georgia",
       address: {
         "@type": "PostalAddress",

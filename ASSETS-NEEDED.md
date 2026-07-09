@@ -7,8 +7,9 @@ Everything on the site works today with AI-generated placeholders and sensible d
 - [ ] **Opening date** — set `config.openingText` (currently "Opening Fall 2026").
 - [ ] **Founding-spot count** — set `config.foundingSpots` / `config.foundingClaimed` (currently 100 / 37). These drive the scarcity counter.
 - [ ] **ESP connection** — pick Klaviyo / Mailchimp / Base44, add `ESP_API_KEY` (+ `ESP_LIST_ID`) in Vercel, and finish `forwardToEsp()` in `app/api/join/route.ts`. Without this, production signups aren't captured.
-- [ ] **Business email** — replace `site.email` placeholder (`hello@thematgolf.com`).
-- [ ] **Real domain** — set `site.url` (currently `https://thematgolf.com`) so SEO/OG/sitemap/QR point correctly.
+- [x] **Business email** — `inquire@golfatthemat.com` (live in footer + schema; all form leads route here).
+- [x] **Real domain** — site: `https://thematgolf.com` (add in Vercel → Settings → Domains + point DNS). Email lives on golfatthemat.com.
+- [ ] **Lead email delivery** — add `RESEND_API_KEY` in Vercel and verify a sending domain so `/api/join` emails every signup to `inquire@golfatthemat.com` (code is wired; see `app/api/join/route.ts`).
 
 ## 🟡 Media to replace (AI placeholders in place now)
 All AI assets live in `public/openart/` and are flagged to swap for real client media:

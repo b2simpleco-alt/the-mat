@@ -1,7 +1,7 @@
 "use client"
 
 import { QRCodeSVG } from "qrcode.react"
-import { Phone } from "lucide-react"
+import { Phone, Mail } from "lucide-react"
 import { site, nav } from "@/lib/content"
 import { Wordmark } from "./wordmark"
 
@@ -29,8 +29,11 @@ export function Footer() {
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-sage">
               {site.tagline}. Open when you are — 24/7. {site.region}.
             </p>
-            <a href={site.phoneHref} className="mt-5 inline-flex items-center gap-2 text-cream transition hover:text-gold">
+            <a href={site.phoneHref} className="mt-5 flex items-center gap-2 text-cream transition hover:text-gold">
               <Phone className="h-4 w-4" /> {site.phone}
+            </a>
+            <a href={site.emailHref} className="mt-2 flex items-center gap-2 text-sm text-cream/80 transition hover:text-gold">
+              <Mail className="h-4 w-4" /> {site.email}
             </a>
             <div className="mt-5 flex gap-3">
               <a href={site.social.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram"

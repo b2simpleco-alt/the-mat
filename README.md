@@ -29,13 +29,15 @@ npx vercel --prod      # deploy
 
 Set env vars in the Vercel dashboard (see below). No secrets are committed.
 
-### Environment variables
+### Environment variables (Vercel → Settings → Environment Variables)
 | Var | Purpose | Status |
 |---|---|---|
-| `ESP_API_KEY` | Email service provider key (Klaviyo / Mailchimp / Base44) | **TODO** — wire in `app/api/join/route.ts → forwardToEsp()` |
-| `ESP_LIST_ID` | Target list/audience id | TODO |
+| `RESEND_API_KEY` | [resend.com](https://resend.com) key — emails every lead to the inbox | **Add before launch** |
+| `LEAD_EMAIL` | Where leads go. Defaults to `inquire@golfatthemat.com` | optional |
+| `FROM_EMAIL` | Verified sender, e.g. `The Mat <leads@thematgolf.com>` | recommended |
+| `ESP_API_KEY` | Optional — also add leads to a Klaviyo/Mailchimp list | optional |
 
-Until an ESP is wired, signups are stored locally in `data/signups.json` (works in dev / long-running Node). On Vercel's serverless FS the write is skipped gracefully — **add the ESP before launch** so production signups are captured.
+Every form on the site (hero, founding, events, final CTA, journal, stubs) POSTs to `app/api/join/route.ts`, which emails the lead to `inquire@golfatthemat.com` via Resend. Until `RESEND_API_KEY` is set, leads are only saved to `data/signups.json` in dev (Vercel's serverless FS is read-only) — **so add the key before driving real traffic** or leads won't be captured in production. To send from `@thematgolf.com`, verify that domain in Resend first.
 
 ---
 
