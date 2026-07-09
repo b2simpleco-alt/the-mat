@@ -11,7 +11,7 @@ export function Faq() {
     <section id="faq" className="relative bg-cream py-24 sm:py-32">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faq.schema) }} />
       <div className="mx-auto max-w-3xl px-5 sm:px-8">
-        <SectionHeading eyebrow={faq.eyebrow} title={faq.title} variant="onCream" align="center" />
+        <SectionHeading eyebrow={faq.eyebrow} title={faq.title} intro={faq.intro} variant="onCream" align="center" />
         <div className="mt-14 divide-y divide-forest-900/10 border-y border-forest-900/10">
           {faq.items.map((item, i) => {
             const isOpen = open === i

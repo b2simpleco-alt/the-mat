@@ -86,7 +86,7 @@ export function Header() {
 
       {/* Mobile / tablet drawer */}
       <div
-        className={`glass absolute inset-x-3 top-[calc(100%+0.25rem)] overflow-hidden rounded-3xl transition-all duration-400 xl:hidden ${
+        className={`absolute inset-x-3 top-[calc(100%+0.25rem)] overflow-hidden rounded-3xl border border-gold/20 bg-forest-950 shadow-[0_30px_70px_-20px_rgba(0,0,0,0.9)] backdrop-blur-2xl transition-all duration-400 xl:hidden ${
           open ? "max-h-[30rem] opacity-100" : "pointer-events-none max-h-0 opacity-0"
         }`}
       >

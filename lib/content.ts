@@ -90,8 +90,8 @@ export const vision = {
       body: "A single, pro-grade big-room bay. No crowds, no walk-ups, no waiting. When it's your time, the whole place is yours.",
     },
     {
-      title: "A Third Place",
-      body: "Leather seating, a proper pour, warm light. A lounge built for a foursome, a date night, or a quiet solo range session.",
+      title: "More Than a Bay",
+      body: "A real lounge, not a stall — comfortable seating, food and drinks, warm lighting. Come with your crew, bring a date, or play a quiet round on your own.",
     },
     {
       title: "Members First",
@@ -206,16 +206,24 @@ export const gallery = {
 /* ── FAQ (+ used for FAQPage schema) ─────────────────────────────── */
 export const faq = {
   eyebrow: "Questions",
-  title: "The Details",
+  title: "Indoor Golf in\nGainesville, GA",
+  intro: "Everything you might want to know about indoor golf at The Mat — the game, the room, memberships, and the founding offer.",
   items: [
-    { q: "What exactly is The Mat?", a: "A members-only indoor golf club in Gainesville / Hall County. One private, pro-grade big-room bay you book by the block or access anytime as a member — with a real lounge, not a crowded arcade." },
-    { q: "When do you open?", a: config.openingText + ". Founding members get opening-day first access and the earliest booking window. Reserve your spot now to be notified the moment we open." },
-    { q: "What does founding membership cost?", a: "The founding rate is announced August 1. Reserving today is free and holds your place — founders lock the special rate for their first month before it's revealed to the public." },
-    { q: "Are you really open 24/7?", a: "Yes. Members get app-based unlock and QR door access, so the room is available around the clock — early mornings, late nights, whenever you want to play." },
-    { q: "It's really just one bay?", a: "One beautifully built big-room bay — on purpose. When you book, the entire room is yours. No walk-ups, no strangers in the next stall, no waiting for a screen." },
-    { q: "How do I reserve a founding spot?", a: "Enter your email anywhere on this page. That's it — no card, no commitment. You'll be first to see the founding rate on August 1 and first in line on opening day." },
-    { q: "Can I bring guests or book a group?", a: "Absolutely. Members can bring guests, and we offer Day Passes for date nights plus corporate, team, school, and party packages that book the whole room." },
-    { q: "What's the catch?", a: "None. Founding spots are limited and the founding rate won't come back — that's the whole deal. Reserve early, lock the rate, help shape the room." },
+    { q: "What is The Mat?", a: "The Mat is a members-only indoor golf club in Gainesville, Georgia. Instead of a row of crowded stalls, it's one private, pro-grade golf simulator bay inside a real lounge — book it by the block or access it anytime as a member. Play a full round, dial in your swing, or just hang out, year-round and any time of day." },
+    { q: "Where is The Mat located?", a: "We're in Gainesville, serving Hall County and the greater North Georgia area. The exact address goes public with our opening — reserve your founding spot to be the first to know when and where the doors open." },
+    { q: "How much does it cost to play indoor golf?", a: "Pricing is revealed on August 1. Around North Georgia, indoor golf simulators usually run about $45–$65 per hour to play, and memberships range from roughly $90 to $300+ a month depending on access. The Mat's founding rates land in that range and get locked in for founding members — reserve now (free) to see the numbers first and hold your first-month price." },
+    { q: "Do you offer memberships, or can I just pay to play?", a: "Both. The Day Pass books the room for a single visit with no membership — perfect for a date night or a one-off round. The Membership gives you 24/7 access and member pricing. And Corporate & Group packages put the whole room in your hands for teams, parties, leagues, and schools." },
+    { q: "Are you really open 24/7?", a: "Yes. Members unlock the door with an app and QR access, so the room is available around the clock — 5am before work, late nights after the kids are down, whenever the game calls. No waiting on daylight or tee-time availability." },
+    { q: "How accurate are the golf simulators?", a: "Very. Pro-grade launch-monitor technology reads ball speed, launch angle, spin, and club data on every swing, with true-to-life ball flight on real courses. It's precise enough for serious practice and realistic enough to be a blast for a total beginner." },
+    { q: "Do I need to bring my own clubs?", a: "Bring them if you have them — but you don't have to. Club rentals are available, so you can show up empty-handed and still play a full round. All you need is you." },
+    { q: "Can beginners and kids play? Is it good for all skill levels?", a: "Absolutely — all ages and skill levels are welcome. A simulator is the easiest, lowest-pressure way to learn: no lost balls, instant feedback, and fun games like closest-to-the-pin and long-drive that level the field for beginners and kids alike." },
+    { q: "How many people can play at once?", a: "When you book The Mat, the whole room is yours. Bring your foursome or a small group, share one big screen with lounge seating, and take turns — it's built to be played together. For larger parties, ask about private events." },
+    { q: "How long does it take to play 18 holes?", a: "About 45 minutes to an hour per person, and faster in a group since there's no walking between holes. Short on time? Play 9, hit the driving range, or work your short game — all in one session." },
+    { q: "Is there food and drinks?", a: "Yes — a real lounge with food and drinks is part of the experience, not an afterthought. Come play, then stay a while. Full menu details land at launch." },
+    { q: "What courses can I play?", a: "A deep library of world-famous courses — Pebble Beach, St Andrews, TPC Sawgrass and dozens more — plus a driving range, practice modes, and games. Play a bucket-list course on a Tuesday night without leaving Gainesville." },
+    { q: "Can I book The Mat for a party, corporate event, or date night?", a: "Yes — it's one of the best things about the room. Book it for birthdays, bachelor and bachelorette parties, corporate team building, golf leagues, fundraisers, or school groups, and the whole space is yours. Your group's first session is on us — see Events." },
+    { q: "Do you offer golf lessons?", a: "Lessons and data-driven coaching arrive at launch. With launch-monitor numbers on every swing, it's one of the fastest ways to actually improve. Reserve your founding spot to be first to book." },
+    { q: "What does founding membership cost, and what's the catch?", a: "The founding rate is announced August 1. Reserving now is free and holds your place — founders lock the special rate for their first month before it goes public. There's no catch: founding spots are limited and the rate won't come back. That's the whole deal." },
   ],
   get schema() {
     return {
